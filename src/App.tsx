@@ -2,13 +2,22 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'sonner'
 
+//Pages
+import Drive from './pages/drive/Drive';
+import Landing from './pages/landing/Landing';
+
 const App = () => {
 
   return (
     <BrowserRouter>
 
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<Drive />} />
+        <Route path="/setting" element={<h1>Setting</h1>} />
+        <Route path="/landing" element={<Landing />} />
+        <Route path="/about" element={<h1>About</h1>} />
+        <Route path="/privacypolicy" element={<h1>Privacy Policy</h1>} />
+        <Route path="/termsandconditions" element={<h1>Terms and Conditions</h1>} />
         <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
 
