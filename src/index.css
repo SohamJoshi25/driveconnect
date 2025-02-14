@@ -1,1 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
+
+body{
+    background-color:hsl(0,0%,7%);
+}
+
+.customScrollBar::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+/* Track */
+.customScrollBar::-webkit-scrollbar-track {
+    background:"#E6E6E6";
+}
+
+/* Handle */
+.customScrollBar::-webkit-scrollbar-thumb {
+    background: #2C2C2C;
+    border-radius:4px;
+}
+
+
+.roboto {
+    font-family: "Roboto", "serif";
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+  .roboto-mono{
+    font-family: "Roboto Mono", "Roboto" , Arial;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  }
