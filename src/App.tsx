@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'sonner'
 
 //Pages
-import Drive from './pages/drive/Drive';
+import Drive from './pages/drivev2/Drive';
 import Landing from './pages/landing/Landing';
 
 const App = () => {

@@ -35,6 +35,7 @@ export interface UserContextType {
     updatedAt: string;
     rootFolderId: string;
     activeFolder: IFolder;
+    breadCrumb: IFolder[];
 
 
     setUserId: React.Dispatch<React.SetStateAction<string>>;
@@ -45,6 +46,7 @@ export interface UserContextType {
     setUpdatedAt: React.Dispatch<React.SetStateAction<string>>;
     setRootFolderId: React.Dispatch<React.SetStateAction<string>>;
     setActiveFolder: React.Dispatch<React.SetStateAction<IFolder>>;
+    setBreadCrumb: React.Dispatch<React.SetStateAction<IFolder[]>>;
 
     setUser: (user: Partial<UserContextType>) => void;
 }
@@ -58,6 +60,7 @@ const defaultContext: UserContextType = {
     createdAt: "",
     updatedAt: "",
     rootFolderId: "",
+    breadCrumb:[],
     activeFolder: {} as IFolder,
 
     setUserId: () => { },
@@ -68,6 +71,7 @@ const defaultContext: UserContextType = {
     setUpdatedAt: () => { },
     setRootFolderId: () => { },
     setActiveFolder: () => { },
+    setBreadCrumb: () => { },
 
     setUser: () => { },
 };
@@ -84,6 +88,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [createdAt, setCreatedAt] = useState<string>("");
     const [updatedAt, setUpdatedAt] = useState<string>("");
     const [rootFolderId, setRootFolderId] = useState<string>("");
+    const [breadCrumb, setBreadCrumb] = useState<IFolder[]>([]);
     const [activeFolder, setActiveFolder] = useState<IFolder>({} as IFolder);
 
     // Function to update multiple fields at once
@@ -107,6 +112,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
                 createdAt,
                 updatedAt,
                 rootFolderId,
+                breadCrumb,
                 activeFolder,
 
                 setUserId,
@@ -117,6 +123,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
                 setUpdatedAt,
                 setRootFolderId,
                 setActiveFolder,
+                setBreadCrumb,
                 setUser,
             }}
         >
