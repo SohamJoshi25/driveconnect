@@ -23,3 +23,13 @@ export type Folder = {
     createdAt?: string;
     updatedAt?: string;
 }
+
+
+export type Account = {
+    _id: string;
+    email: string;
+    picture: Base64URLString;
+    userId: string;
+    createdAt?: string;
+    updatedAt?: string;
+}

@@ -13,9 +13,13 @@ import { useRef, useState } from "react";
 type Props = {
   fileData?: File;
   folderData?: Folder;
+  handleDeleteFolder?: (folderId: string, e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
+  handleChangeFolder?: (folderId: Folder) => void;
+  handleDeleteFile?: (fileId: string, e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
+  handleDownloadFile?: (fileId: string, e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
 }
 
-const DriveCard = ({ fileData, folderData }: Props) => {
+const DriveCard = ({ fileData, folderData, handleDeleteFolder, handleChangeFolder, handleDeleteFile, handleDownloadFile }: Props) => {
 
   const [menu, setMenu] = useState<boolean>(false);
 
@@ -32,7 +36,12 @@ const DriveCard = ({ fileData, folderData }: Props) => {
 
 
   return (
-    <div className="relative h-[50px] w-fit rounded-[5px] border border-[#939393] text-[#CACACA] flex items-center hover:shadow-sm shadow-[#7e7e7e] peer-[name]" onMouseOver={() => { if (folderNameRef.current) folderNameRef.current.style.color = "#ffba00" }} onMouseOut={() => { if (folderNameRef.current) folderNameRef.current.style.color = "#CACACA" }}>
+    <div
+      className="relative h-[50px] w-fit rounded-[5px] border border-[#939393] text-[#CACACA] flex items-center hover:shadow-sm shadow-[#7e7e7e] peer-[name]"
+      onMouseOver={() => { if (folderNameRef.current) folderNameRef.current.style.color = "#ffba00" }}
+      onMouseOut={() => { if (folderNameRef.current) folderNameRef.current.style.color = "#CACACA" }}
+      onDoubleClick={handleChangeFolder ? () => handleChangeFolder(folderData!) : undefined}
+    >
       {/* PPTX Label */}
       <div className="w-[6ch] mx-[6px] flex justify-center items-center tracking-tighter font-semibold roboto-mono hover overflow-hidden">
         {fileData?.extention ?? <FolderSVG />}
@@ -58,13 +67,13 @@ const DriveCard = ({ fileData, folderData }: Props) => {
       >
         {fileData ?
           <div className="flex flex-col gap-2 p-2 h-full">
-            <span className="hover:text-white cursor-pointer">Rename</span>
-            <span className="hover:text-white cursor-pointer">Download</span>
-            <span className="text-red-700 hover:text-red-500 cursor-pointer">Delete</span>
+            {/* <span className="hover:text-white cursor-pointer">Rename</span> */}
+            <span className="hover:text-white cursor-pointer" onClick={(e) => { setMenu(false); handleDownloadFile!(fileData._id.toString(), e) }}>Download</span>
+            <span className="text-red-700 hover:text-red-500 cursor-pointer" onClick={(e) => { setMenu(false); handleDeleteFile!(fileData._id.toString(), e) }}>Delete</span>
           </div> :
           <div className="flex flex-col gap-2 p-2 h-full">
-            <span className="hover:text-white cursor-pointer">Rename</span>
-            <span className="text-red-700 hover:text-red-500 cursor-pointer">Delete</span>
+            {/* <span className="hover:text-white cursor-pointer">Rename</span> */}
+            <span className="text-red-700 hover:text-red-500 cursor-pointer" onClick={(e) => handleDeleteFolder ? handleDeleteFolder(folderData!._id.toString(), e) : undefined}>Delete</span>
           </div>
         }
 

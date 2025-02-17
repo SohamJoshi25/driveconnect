@@ -19,7 +19,7 @@ const Drive = () => {
 
   const { downloadFile } = useSocketFileTransfer();
 
-  const { setUser, _id, name, email, picture, createdAt, updatedAt, rootFolderId, setActiveFolder, activeFolder , breadCrumb, setBreadCrumb } = useUserContext();
+  const { setUser, _id, name, email, picture, createdAt, updatedAt, rootFolderId, setActiveFolder, activeFolder, breadCrumb, setBreadCrumb } = useUserContext();
 
   const [token, setToken] = useState<string | null>(localStorage.getItem('token') ?? searchParams.get("token"));
   const [error, setError] = useState<string | null>("");
@@ -48,11 +48,11 @@ const Drive = () => {
 
   useEffect(() => {
     if (rootFolderId && token) {
-      getNestedFileInfo(token!, rootFolderId, () => {}, setActiveFolder, setError);
+      getNestedFileInfo(token!, rootFolderId, () => { }, setActiveFolder, setError);
     }
   }, [rootFolderId]);
 
-  const changeFolder = (folder:IFolder) => {
+  const changeFolder = (folder: IFolder) => {
     getNestedFileInfo(token!, folder._id, () => {
       const _breadCrumb = [...breadCrumb];
       _breadCrumb.push(activeFolder);
@@ -62,7 +62,7 @@ const Drive = () => {
 
   const backFolder = () => {
     const _breadCrumb = [...breadCrumb];
-    if(_breadCrumb.length>0){
+    if (_breadCrumb.length > 0) {
       const lastFolder = _breadCrumb.pop()!;
       getNestedFileInfo(token!, lastFolder._id, () => {
         setBreadCrumb(_breadCrumb);
@@ -72,19 +72,19 @@ const Drive = () => {
 
   const createFolderHandle = () => {
     const name = window.prompt("Folder Name");
-    if(name?.trim()){
-      createFolder(token!,name,activeFolder._id,setActiveFolder,setError);
+    if (name?.trim()) {
+      createFolder(token!, name, activeFolder._id, setActiveFolder, setError);
     }
   }
 
-  const handleDeleteFolder = (folderId:string,e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+  const handleDeleteFolder = (folderId: string, e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     e.stopPropagation();
-    deleteFolder(token!,folderId,setActiveFolder,setError);
+    deleteFolder(token!, folderId, setActiveFolder, setError);
   }
- 
-  const handleDeleteFile = (fileId:string,e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+
+  const handleDeleteFile = (fileId: string, e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     e.stopPropagation();
-    deleteFile(token!,fileId,setActiveFolder,setError);
+    deleteFile(token!, fileId, setActiveFolder, setError);
   }
 
   const logout = () => {
@@ -116,10 +116,10 @@ const Drive = () => {
       {activeFolder.subFolders && <div className="p-2">
 
         <div className="flex flex-row justify-between gap-x-10 my-5 p-2 items-center text-center">
-          {breadCrumb.length>0 && <button className="p-1 bg-slate-400 rounded-lg h-10 w-20 cursor-pointer" onClick={backFolder}>Back</button>}
+          {breadCrumb.length > 0 && <button className="p-1 bg-slate-400 rounded-lg h-10 w-20 cursor-pointer" onClick={backFolder}>Back</button>}
           <span className="p-1 bg-amber-100 px-5 h-10 w-full cursor-pointer text-left">
             {
-              breadCrumb &&  breadCrumb.map((folder) => <span><span className="hover:underline" key={folder._id}>{folder.name}</span> / </span> )
+              breadCrumb && breadCrumb.map((folder) => <span><span className="hover:underline" key={folder._id}>{folder.name}</span> / </span>)
             }
             {activeFolder && <span className="hover:underline">{activeFolder.name}</span>} /
           </span>
@@ -130,16 +130,16 @@ const Drive = () => {
         </div>
 
         {!isUpload && activeFolder.subFolders.length >= 0 && <div className="my-10 columns-5">
-          {activeFolder.subFolders.map((folder) => {return <span key={folder._id} className="bg-slate-300 rounded-md p-2 w-fit h-10 m-2 cursor-pointer" onClick={() => changeFolder(folder)}>{folder.name} <span className="text-red-700 border-2 h-[10px] w-[10px] cursor-pointer" onClick={(e) => {handleDeleteFolder(folder._id,e)}}>X</span></span> })}
+          {activeFolder.subFolders.map((folder) => { return <span key={folder._id} className="bg-slate-300 rounded-md p-2 w-fit h-10 m-2 cursor-pointer" onClick={() => changeFolder(folder)}>{folder.name} <span className="text-red-700 border-2 h-[10px] w-[10px] cursor-pointer" onClick={(e) => { handleDeleteFolder(folder._id, e) }}>X</span></span> })}
         </div>}
 
         {!isUpload &&
           activeFolder.subFiles.length >= 0 && <div className="my-10 flex flex-wrap">
-            {activeFolder.subFiles.map((file) => {return <span key={file._id} className="bg-slate-300 rounded-md p-2 w-fit h-10 m-2" onDoubleClick={()=>{downloadFile(file._id,token!)}} >{file.name} <span className="text-red-700 border-2 h-[10px] w-[10px] cursor-pointer" onClick={(e) => {handleDeleteFile(file._id,e)}}>X</span></span> })}
+            {activeFolder.subFiles.map((file) => { return <span key={file._id} className="bg-slate-300 rounded-md p-2 w-fit h-10 m-2" onDoubleClick={() => { downloadFile(file._id, token!) }} >{file.name} <span className="text-red-700 border-2 h-[10px] w-[10px] cursor-pointer" onClick={(e) => { handleDeleteFile(file._id, e) }}>X</span></span> })}
           </div>
         }
 
-        {isUpload && <Upload setIsUpload={setIsUpload} token={token!}/>}
+        {isUpload && <Upload setIsUpload={setIsUpload} token={token!} />}
 
       </div >}
     </div >

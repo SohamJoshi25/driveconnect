@@ -1,0 +1,66 @@
+[
+    {
+        "_id": "65d0c1f2e1d3f1a1b2c3d4e5",
+        "email": "user1@example.com",
+        "userId": "65d0c1f2e1d3f1a1b2c3d4e6",
+        "picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+        "createdAt": "2025-02-16T12:00:00.000Z",
+        "updatedAt": "2025-02-16T12:05:00.000Z"
+    },
+    {
+        "_id": "65d0c1f2e1d3f1a1b2c3d4e7",
+        "email": "user2@example.com",
+        "userId": "65d0c1f2e1d3f1a1b2c3d4e8",
+        "picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+        "createdAt": "2025-02-16T12:10:00.000Z",
+        "updatedAt": "2025-02-16T12:15:00.000Z"
+    },
+    {
+        "_id": "65d0c1f2e1d3f1a1b2c3d4e9",
+        "email": "user3@example.com",
+        "userId": "65d0c1f2e1d3f1a1b2c3d4ea",
+        "picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+        "createdAt": "2025-02-16T12:20:00.000Z",
+        "updatedAt": "2025-02-16T12:25:00.000Z"
+    },
+    {
+        "_id": "65d0c1f2e1d3f1a1b2c3d4eb",
+        "email": "user4@example.com",
+        "userId": "65d0c1f2e1d3f1a1b2c3d4ec",
+        "picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+        "createdAt": "2025-02-16T12:30:00.000Z",
+        "updatedAt": "2025-02-16T12:35:00.000Z"
+    },
+    {
+        "_id": "65d0c1f2e1d3f1a1b2c3d4ed",
+        "email": "user5@example.com",
+        "userId": "65d0c1f2e1d3f1a1b2c3d4ee",
+        "picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+        "createdAt": "2025-02-16T12:40:00.000Z",
+        "updatedAt": "2025-02-16T12:45:00.000Z"
+    },
+    {
+        "_id": "65d0c1f2e1d3f1a1b2c3d4ef",
+        "email": "user6@example.com",
+        "userId": "65d0c1f2e1d3f1a1b2c3d4f0",
+        "picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+        "createdAt": "2025-02-16T12:50:00.000Z",
+        "updatedAt": "2025-02-16T12:55:00.000Z"
+    },
+    {
+        "_id": "65d0c1f2e1d3f1a1b2c3d4f1",
+        "email": "user7@example.com",
+        "userId": "65d0c1f2e1d3f1a1b2c3d4f2",
+        "picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+        "createdAt": "2025-02-16T13:00:00.000Z",
+        "updatedAt": "2025-02-16T13:05:00.000Z"
+    },
+    {
+        "_id": "65d0c1f2e1d3f1a1b2c3d4f3",
+        "email": "user8@example.com",
+        "userId": "65d0c1f2e1d3f1a1b2c3d4f4",
+        "picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+        "createdAt": "2025-02-16T13:10:00.000Z",
+        "updatedAt": "2025-02-16T13:15:00.000Z"
+    }
+]
