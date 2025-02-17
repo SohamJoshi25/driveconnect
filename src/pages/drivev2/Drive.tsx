@@ -28,7 +28,7 @@ const Drive = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const { setUser, name, picture, rootFolderId, setActiveFolder, activeFolder, breadCrumb, setBreadCrumb } = useUserContext();
+  const { setUser, name, picture, rootFolderId, setActiveFolder, activeFolder, breadCrumb, setBreadCrumb, setAccounts } = useUserContext();
 
 
   const [token, setToken] = useState<string | null>(localStorage.getItem('token') ?? searchParams.get("token"));
@@ -72,7 +72,7 @@ const Drive = () => {
       const isJWTValid = validateJWT(token);
 
       if (isJWTValid) {
-        getUserInfo(token, setUser, setError, setLoading);
+        getUserInfo(token, setUser, setAccounts, setError, setLoading);
       } else {
         localStorage.removeItem("token");
         setToken(null);
@@ -180,11 +180,11 @@ const Drive = () => {
       {/**Sidebar */}
       {<div
         ref={accountRef}
-        className={`fixed customScrollBar h-full w-[330px] pb-1 bg-[hsl(0,0%,7%)] right-0 top-0 rounded-[5px] border-[0.5px] border-[#a3a3a3] shadow-md 
-          transition-all duration-250 ease-in-out overflow-y-hidden
+        className={`fixed customScrollBar h-[calc(100vh-10px)] w-[330px] pb-1 bg-[hsl(0,0%,7%)] right-0 top-0 rounded-[5px] border-[0.5px] border-[#a3a3a3] shadow-md 
+          transition-all duration-250 ease-in-out overflow-y-hidden my-1
           ${isAccountOpen ? "opacity-100 scale-100 translate-y-0 z-10 " : "opacity-0 scale-0 translate-x-[1040px] -z-0"}`}
       >
-        <Account token={"token"} logout={logout} />
+        <Account token={token!} logout={logout} />
 
       </div>}
 

@@ -2,9 +2,9 @@ import { useRef, useEffect } from 'react';
 import io from 'socket.io-client';
 import { toast } from 'sonner';
 import { Folder, File as IFile } from '../types/types';
-import { BACKEND_DOMAIN_SOCKET } from '../../../common/constants';
+import { BACKEND_DOMAIN } from '../../../common/constants';
 
-const socketInstance = io(BACKEND_DOMAIN_SOCKET);
+const socketInstance = io(BACKEND_DOMAIN);
 
 interface FileMetadata {
   name: string;
@@ -99,7 +99,7 @@ const useSocketFileTransfer = ( setError:React.Dispatch<React.SetStateAction<str
           size: file.size,
           parentFolderId
         },
-        (ack: { success: boolean; token: string; chunk_size: number, file:IFile }) => {
+        (ack: { success: boolean; token: string; chunk_size: number, file:IFile, error?:string }) => {
           if (ack && ack.success) {
             token = ack.token;
             CHUNK_SIZE = ack.chunk_size;
@@ -113,7 +113,8 @@ const useSocketFileTransfer = ( setError:React.Dispatch<React.SetStateAction<str
             
             resolve();
           } else {
-            toast.error("Failed to Upload File")
+            setLoading(false);
+            toast.error(ack.error ?? "Failed to Upload File")
             reject(new Error('Failed to start'));
           }
         }

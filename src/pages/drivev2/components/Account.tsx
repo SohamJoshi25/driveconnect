@@ -4,6 +4,8 @@ import { BACKEND_DOMAIN } from '../../../common/constants.js';
 
 import _Accounts from "../accounts.json";
 import { useUserContext } from '../context/UserProvider.js';
+import { useNavigate } from 'react-router-dom';
+import { deleteAccounts, deleteUser } from '../utils/axios-util.js';
 
 type Props = {
   token: string;
@@ -14,10 +16,27 @@ const Account = ({ token, logout }: Props) => {
 
   const Accounts: TAccount[] = _Accounts;
 
-  const { email, name, picture } = useUserContext();
+  const navigate = useNavigate();
+
+  const { email, name, picture, accounts } = useUserContext();
 
   const addAccount = () => {
     window.location.href = BACKEND_DOMAIN + `/v1/auth/accountlogin?token=${token}`;
+  }
+
+  function handleDeleteAccounts(event: React.MouseEvent<HTMLSpanElement, MouseEvent>): void {
+    event.preventDefault();
+    deleteAccounts(token, () => {
+      window.location.href = "/";
+    });
+  }
+
+  function handleDeleteUser(event: React.MouseEvent<HTMLSpanElement, MouseEvent>): void {
+    event.preventDefault();
+    deleteUser(token, () => {
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    });
   }
 
   return (
@@ -34,7 +53,7 @@ const Account = ({ token, logout }: Props) => {
       <div>
         <span className="text-white text-[18px]">Connected Drive Accounts</span>
         <div className='my-4 flex flex-col gap-1'>
-          {Accounts.map((account, idx) => {
+          {accounts && accounts.length > 0 && accounts.map((account, idx) => {
             return <div className='text-[#CACACA] text-sm flex justify-between items-center' key={idx}>
               <span className='hover:text-white'>{account.email}</span>
             </div>
@@ -43,7 +62,12 @@ const Account = ({ token, logout }: Props) => {
         {Accounts.length <= 10 && <span className="text-[#CACACA] hover:text-blue-500 cursor-pointer text-sm" onClick={addAccount}>Add Account</span>}
       </div>
 
-      <span className="text-[#CACACA] hover:text-white cursor-pointer mt-auto mb-2" onClick={logout}>Logout</span>
+      <div className='mt-auto mb-6 flex flex-col gap-1 text-[16px]'>
+        <span className="text-red-700 hover:text-red-500 cursor-pointer" onClick={handleDeleteAccounts} title='DELETES all files and Accounts | This CANNOT be Undone'>Delete Drive Accounts</span>
+        <span className="text-red-700 hover:text-red-500 cursor-pointer" onClick={handleDeleteUser} title='DELETES Everything related to Loggedin User | This CANNOT be Undone'>Delete User Account</span>
+        <span className="text-[#CACACA] hover:text-white cursor-pointer" onClick={logout}>Logout</span>
+      </div>
+
     </div>
   )
 }

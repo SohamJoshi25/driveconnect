@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode, useContext } from "react";
-import { Folder } from "../types/types";
+import { Account, Folder } from "../types/types";
 
 export interface UserContextType {
     _id: string;
@@ -11,6 +11,7 @@ export interface UserContextType {
     rootFolderId: string;
     activeFolder: Folder;
     breadCrumb: Folder[];
+    accounts: Account[];
 
 
     setUserId: React.Dispatch<React.SetStateAction<string>>;
@@ -22,6 +23,7 @@ export interface UserContextType {
     setRootFolderId: React.Dispatch<React.SetStateAction<string>>;
     setActiveFolder: React.Dispatch<React.SetStateAction<Folder>>;
     setBreadCrumb: React.Dispatch<React.SetStateAction<Folder[]>>;
+    setAccounts: React.Dispatch<React.SetStateAction<Account[]>>;
 
     setUser: (user: Partial<UserContextType>) => void;
 }
@@ -36,6 +38,7 @@ const defaultContext: UserContextType = {
     updatedAt: "",
     rootFolderId: "",
     breadCrumb: [],
+    accounts: [],
     activeFolder: {} as Folder,
 
     setUserId: () => { },
@@ -47,6 +50,7 @@ const defaultContext: UserContextType = {
     setRootFolderId: () => { },
     setActiveFolder: () => { },
     setBreadCrumb: () => { },
+    setAccounts: () => { },
 
     setUser: () => { },
 };
@@ -64,6 +68,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [updatedAt, setUpdatedAt] = useState<string>("");
     const [rootFolderId, setRootFolderId] = useState<string>("");
     const [breadCrumb, setBreadCrumb] = useState<Folder[]>([]);
+    const [accounts, setAccounts] = useState<Account[]>([]);
     const [activeFolder, setActiveFolder] = useState<Folder>({} as Folder);
 
     // Function to update multiple fields at once
@@ -92,6 +97,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
                 rootFolderId,
                 breadCrumb,
                 activeFolder,
+                accounts,
 
                 setUserId,
                 setName,
@@ -102,6 +108,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
                 setRootFolderId,
                 setActiveFolder,
                 setBreadCrumb,
+                setAccounts,
                 setUser,
             }}
         >

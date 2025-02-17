@@ -2,10 +2,10 @@ import axios from "axios";
 import { Dispatch, SetStateAction } from "react";
 import { BACKEND_DOMAIN } from "../../../common/constants";
 import { UserContextType } from "../context/UserProvider";
-import { Folder } from "../types/types";
+import { Account, Folder } from "../types/types";
 import { toast } from "sonner";
 
-export const getUserInfo = async (token: string, setUser: (setUser: Partial<UserContextType>) => void, setError: Dispatch<SetStateAction<string | null>>, setLoading: Dispatch<SetStateAction<boolean>>) => {
+export const getUserInfo = async (token: string, setUser: (setUser: Partial<UserContextType>) => void,  setAccounts: React.Dispatch<React.SetStateAction<Account[]>> ,setError: Dispatch<SetStateAction<string | null>>, setLoading: Dispatch<SetStateAction<boolean>>) => {
   try {
     setLoading(true);
     const response = await axios.get(BACKEND_DOMAIN + "/v1/user/info", {
@@ -13,11 +13,43 @@ export const getUserInfo = async (token: string, setUser: (setUser: Partial<User
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response.data.user)
+    const responseAccount = await axios.get(BACKEND_DOMAIN + "/v1/account/info", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    setAccounts(responseAccount.data.accounts)
     setUser(response.data.user);
   } catch (error) {
     console.log(error);
     setError(JSON.stringify(error));
+  }
+};
+
+export const deleteAccounts = async (token: string, callback:()=>void) => {
+  try {
+    const response = await axios.delete(BACKEND_DOMAIN + "/v1/user/flushfiles", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    callback();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteUser = async (token: string, callback:()=>void) => {
+  try {
+    const response = await axios.delete(BACKEND_DOMAIN + "/v1/user/deleteUser", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    callback();
+  } catch (error) {
+    console.log(error);
   }
 };
 
