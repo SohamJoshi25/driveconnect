@@ -62,12 +62,12 @@ const useSocketFileTransfer = ( setError:React.Dispatch<React.SetStateAction<str
     };
   }, []);
 
-  const handleCLoseDialogueDownload = (e) => {
+  const handleCLoseDialogueDownload = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     toast.error("A File Download in in Progress. You can close after File downloading is finished.");
   }
 
-  const handleCLoseDialogueUpload = (e) => {
+  const handleCLoseDialogueUpload = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     toast.error("A File Upload in in Progress. You can close after File uploading is finished.");
   }

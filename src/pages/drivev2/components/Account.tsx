@@ -4,7 +4,6 @@ import { BACKEND_DOMAIN } from '../../../common/constants.js';
 
 import _Accounts from "../accounts.json";
 import { useUserContext } from '../context/UserProvider.js';
-import { useNavigate } from 'react-router-dom';
 import { deleteAccounts, deleteUser } from '../utils/axios-util.js';
 
 type Props = {
@@ -16,7 +15,6 @@ const Account = ({ token, logout }: Props) => {
 
   const Accounts: TAccount[] = _Accounts;
 
-  const navigate = useNavigate();
 
   const { email, name, picture, accounts } = useUserContext();
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import { Dispatch, SetStateAction } from "react";
 import { BACKEND_DOMAIN } from "../../../common/constants";
@@ -29,7 +30,7 @@ export const getUserInfo = async (token: string, setUser: (setUser: Partial<User
 
 export const deleteAccounts = async (token: string, callback:()=>void) => {
   try {
-    const response = await axios.delete(BACKEND_DOMAIN + "/v1/user/flushfiles", {
+     await axios.delete(BACKEND_DOMAIN + "/v1/user/flushfiles", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -42,7 +43,7 @@ export const deleteAccounts = async (token: string, callback:()=>void) => {
 
 export const deleteUser = async (token: string, callback:()=>void) => {
   try {
-    const response = await axios.delete(BACKEND_DOMAIN + "/v1/user/deleteUser", {
+     await axios.delete(BACKEND_DOMAIN + "/v1/user/deleteUser", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
