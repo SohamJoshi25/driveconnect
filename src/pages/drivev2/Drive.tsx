@@ -55,7 +55,7 @@ const Drive = () => {
   });
 
 
-  const openNew = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const openNew = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.stopPropagation();
     setIsNew((p) => !p)
   }
