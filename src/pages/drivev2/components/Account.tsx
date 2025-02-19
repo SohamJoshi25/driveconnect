@@ -9,9 +9,10 @@ import { deleteAccounts, deleteUser } from '../utils/axios-util.js';
 type Props = {
   token: string;
   logout: () => void;
+  setToken: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const Account = ({ token, logout }: Props) => {
+const Account = ({ token, logout, setToken }: Props) => {
 
   const Accounts: TAccount[] = _Accounts;
 
@@ -32,6 +33,7 @@ const Account = ({ token, logout }: Props) => {
   function handleDeleteUser(event: React.MouseEvent<HTMLSpanElement, MouseEvent>): void {
     event.preventDefault();
     deleteUser(token, () => {
+      setToken(null);
       localStorage.removeItem("token");
       window.location.href = "/";
     });

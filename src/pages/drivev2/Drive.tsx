@@ -34,7 +34,7 @@ const Drive = () => {
   const [token, setToken] = useState<string | null>(localStorage.getItem('token') ?? searchParams.get("token"));
   const [error, setError] = useState<string | null>(null);
   const [progress, setProgress] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [file, setFile] = useState<File | null>(null);
 
   const { uploadFile, downloadFile } = useSocketFileTransfer(setError, setLoading, setProgress, setActiveFolder);
@@ -72,7 +72,7 @@ const Drive = () => {
       const isJWTValid = validateJWT(token);
 
       if (isJWTValid) {
-        getUserInfo(token, setUser, setAccounts, setError, setLoading);
+        getUserInfo(token, setUser, setAccounts, setError, setLoading, setToken, navigate);
       } else {
         localStorage.removeItem("token");
         setToken(null);
@@ -94,7 +94,7 @@ const Drive = () => {
     if (rootFolderId && token) {
       getNestedFileInfo(token!, rootFolderId, () => { }, setActiveFolder, setError, setLoading);
     }
-  }, [rootFolderId]);
+  }, [rootFolderId, token]);
 
 
   const handleChangeFolder = (folder: Folder) => {
@@ -184,7 +184,7 @@ const Drive = () => {
           transition-all duration-250 ease-in-out overflow-y-hidden my-1
           ${isAccountOpen ? "opacity-100 scale-100 translate-y-0 z-10 " : "opacity-0 scale-0 translate-x-[1040px] -z-0"}`}
       >
-        <Account token={token!} logout={logout} />
+        <Account token={token!} logout={logout} setToken={setToken} />
 
       </div>}
 

@@ -1,12 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Dispatch, SetStateAction } from "react";
 import { BACKEND_DOMAIN } from "../../../common/constants";
 import { UserContextType } from "../context/UserProvider";
 import { Account, Folder } from "../types/types";
 import { toast } from "sonner";
+import { NavigateFunction } from "react-router-dom";
 
-export const getUserInfo = async (token: string, setUser: (setUser: Partial<UserContextType>) => void,  setAccounts: React.Dispatch<React.SetStateAction<Account[]>> ,setError: Dispatch<SetStateAction<string | null>>, setLoading: Dispatch<SetStateAction<boolean>>) => {
+export const getUserInfo = async (
+  token: string,
+  setUser: (setUser: Partial<UserContextType>) => void,
+  setAccounts: React.Dispatch<React.SetStateAction<Account[]>> ,
+  setError: Dispatch<SetStateAction<string | null>>,
+  setLoading: Dispatch<SetStateAction<boolean>>,
+  setToken: Dispatch<SetStateAction<string | null>>,
+  navigate:NavigateFunction
+) => {
+  
   try {
     setLoading(true);
     const response = await axios.get(BACKEND_DOMAIN + "/v1/user/info", {
@@ -14,18 +24,26 @@ export const getUserInfo = async (token: string, setUser: (setUser: Partial<User
         Authorization: `Bearer ${token}`,
       },
     });
+    if(!response.data.user){
+      throw new Error("USER_NOT_FOUND");
+    }
     const responseAccount = await axios.get(BACKEND_DOMAIN + "/v1/account/info", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
+  
     setAccounts(responseAccount.data.accounts)
     setUser(response.data.user);
-  } catch (error) {
-    console.log(error);
-    setError(JSON.stringify(error));
+  } catch (_error) {
+    const error = _error as AxiosError;
+    if(error.status==404){
+      setToken(null);
+      localStorage.removeItem("token");
+    }
+    navigate("/landing")
   }
+
 };
 
 export const deleteAccounts = async (token: string, callback:()=>void) => {
