@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
     return (
         <div className='py-5 px-5 md:px-20 roboto-mon'>
 
-            <div className="flex flex-row justify-center items-center px-10 pt-4">
+            <div className="flex flex-row justify-center items-center md:px-10 pt-4">
                 <span className="text-3xl text-white">Privacy Policy</span>
                 <span className="ml-auto cursor-pointer text-[#CACACA] hover:text-white" onClick={() => navigate("/")}>Go Home</span>
             </div>

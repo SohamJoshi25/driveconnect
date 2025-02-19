@@ -25,18 +25,18 @@ const Landing = () => {
             <div className="flex justify-between flex-col-reverse items-center md:flex-row gap-10 md:gap-20 lg:gap-30 mt-10 md:my-10 mx-20 md:mx-30 lg:mx-80">
                 <div className="text-white text-[17px] text-start w-[350px] roboto-mono">
                     <span>Our app loves you to connect multiple drive accounts and use all of your drive account storage via out app. This also helps to reduce a phenomena called as <span className="italic">fragmentation of memory </span> which occurs due to parcel usage of drive resulting into restricted storage in spite of having the totalspace.</span>
-                    <div className="pt-6 pb-4 text-[16px]">Start Using our app now.</div>
+                    <div className="pt-8 pb-6 text-[16px]">Start Using our app now.</div>
                     <button className="rounded-[6px] text-sm w-[160px] border border-[#939393] py-2 px-2 flex items-center justify-around  hover:shadow-sm hover:border-white text-[#CACACA] hover:text-white shadow-[#7e7e7e] cursor-pointer" onClick={() => { window.location.href = userLoginURL }}>Google Sign In</button>
-                    <span className="text-xs mt-4 line-clamp-3">By Signing in you aggree to all <span className="cursor-pointer underline underline-offset-2 decoration-blue-500" onClick={handletnc}>terms and conditions</span> and have read and understood our <span className="cursor-pointer underline underline-offset-2 decoration-blue-500" onClick={handlepp}>privacy policy</span>.</span>
+                    <span className="text-xs mt-4 pl-1 line-clamp-3">By Signing in you aggree to all <span className="cursor-pointer underline underline-offset-2 decoration-blue-500" onClick={handletnc}>terms and conditions</span> and have read and understood our <span className="cursor-pointer underline underline-offset-2 decoration-blue-500" onClick={handlepp}>privacy policy</span>.</span>
                 </div>
                 <GraphicSVG></GraphicSVG>
             </div>
 
-            <h2 className="text-[16px] mt-16 mx-10 md:mx-30 lg:mx-80">
+            <h2 className="text-[16px] mt-8 mx-10 md:mx-30 lg:mx-80">
                 What's special about our app is the security we provide, we break your files into small units called as chunks and store them in your own drives so your data remains with with you.and In fact even Google can't access this data inside your drive as this data is only available to our app.The app allows you to have multiple drive account storage while having the abstraction of using a single one.
             </h2>
 
-            <h2 className="text-[16px] mx-10 md:mx-30 lg:mx-80">
+            <h2 className="text-[16px] mx-13 md:mx-30 lg:mx-80">
                 What's special about our app is the security we provide, we break your files into small units called as chunks and store them in your own drives so your data remains with with you.and In fact even Google can't access this data inside your drive as this data is only available to our app.The app allows you to have multiple drive account storage while having the abstraction of using a single one.
             </h2>
 
