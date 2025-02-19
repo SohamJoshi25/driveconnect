@@ -192,7 +192,7 @@ const Drive = () => {
       {isNewFile && isNew && <div ref={newRef} className="absolute left-[-14px] z-40 min-h-screen w-full backdrop-blur-xs flex justify-center items-center">
         <div className="bg-[hsl(0,0%,7%)] flex flex-col items-start justify-center gap-3">
           <h1 className="text-white text-2xl">Upload File</h1>
-          <input type="file" className="text-[#CACACA] hover:text-white cursor-pointer" onChange={(e) => { setFile(e.target.files![0]) }} />
+          <input type="file" className="text-[#CACACA] hover:text-white cursor-pointer" accept="*/*" onChange={(e) => { setFile(e.target.files![0]) }} />
           <button onClick={handleUpload} className="text-[#CACACA] hover:text-white cursor-pointer" >Upload</button>
           <button onClick={() => {
             setIsNew(false);

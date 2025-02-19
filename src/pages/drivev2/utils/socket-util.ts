@@ -183,7 +183,7 @@ const useSocketFileTransfer = ( setError:React.Dispatch<React.SetStateAction<str
   
     const handle = await window.showSaveFilePicker({
       suggestedName: fileName,
-      types: [{ description: 'All Files', accept: {} }],
+      types: [{ description: 'All Files', accept: { '*/*': [] } }],
     });
   
     const writableStreamHandle = await handle.createWritable();
