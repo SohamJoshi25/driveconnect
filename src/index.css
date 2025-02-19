@@ -21,6 +21,9 @@ body{
     border-radius:4px;
 }
 
+.sizing-content{
+  field-sizing:content;
+}
 
 .roboto {
     font-family: "Roboto", "serif";

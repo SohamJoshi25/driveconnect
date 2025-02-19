@@ -1,5 +1,5 @@
-import { Navigate, useNavigate } from "react-router-dom"
-import { BACKEND_DOMAIN } from "../../common/constants"
+import { useNavigate } from "react-router-dom"
+import { BACKEND_DOMAIN, CONTACT_MAIL, GITHUB_LINK, LINKEDIN_LINK, WEBSITE_LINK } from "../../common/constants"
 import GraphicSVG from "./assets/GraphicSVG"
 
 const userLoginURL = BACKEND_DOMAIN + "/v1/auth/userLogin"
@@ -46,15 +46,15 @@ const Landing = () => {
 
             <div className="w-full bg-black h-42 flex justify-between items-center md:px-20 px-10 max-[525px]:gap-10">
                 <div className="flex text-xs flex-col gap-1 text-[#CACACA] w-20 md:w-fit">
-                    <span className="hover:text-white cursor-pointer">Github</span>
-                    <span className="hover:text-white cursor-pointer">Linkedin</span>
-                    <span className="hover:text-white cursor-pointer">My Website</span>
-                    <span className="hover:text-white cursor-pointer">Contact</span>
+                    <a className="hover:text-white cursor-pointer" title="Github" href={GITHUB_LINK} target="_blank" referrerPolicy="no-referrer">Github</a>
+                    <a className="hover:text-white cursor-pointer" title="LinkedIN" href={LINKEDIN_LINK} target="_blank" referrerPolicy="no-referrer">Linkedin</a>
+                    <a className="hover:text-white cursor-pointer" title="My Website" href={WEBSITE_LINK} target="_blank">My Website</a>
+                    <a className="hover:text-white cursor-pointer" title="Contact email address" href={"mailto:" + CONTACT_MAIL} >Contact</a>
                 </div>
                 <div className="text-lg md:text-xl"> Soham Joshi</div>
                 <div className="flex text-xs flex-col gap-1 text-[#CACACA]">
-                    <span className="hover:text-white cursor-pointer">Privacy Policy</span>
-                    <span className="hover:text-white cursor-pointer">Terms and Conditions</span>
+                    <span className="hover:text-white cursor-pointer" onClick={handlepp}>Privacy Policy</span>
+                    <span className="hover:text-white cursor-pointer" onClick={handletnc}>Terms and Conditions</span>
                 </div>
             </div>
 

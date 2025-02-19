@@ -39,8 +39,8 @@ const Drive = () => {
 
   const { uploadFile, downloadFile } = useSocketFileTransfer(setError, setLoading, setProgress, setActiveFolder);
 
-  const [fileFilter, setFileFilter] = useState<string>("ANAME");
-  const [folderFilter, setFolderFilter] = useState<string>("ANAME");
+  const [fileFilter, setFileFilter] = useState<string>("NONE");
+  const [folderFilter, setFolderFilter] = useState<string>("NONE");
   const [isNew, setIsNew] = useState<boolean>(false);
   const [isNewFile, setIsNewFile] = useState<boolean>(false);
   const [isAccountOpen, setIsAccountOpen] = useState<boolean>(false);
@@ -254,10 +254,11 @@ const Drive = () => {
               <select
                 name="sortOptions"
                 id="sortOptions"
-                className="bg-[hsl(0,0%,7%)] text-sm text-[#CACACA] hover:text-white px-2 py-1 rounded-md outline-0 border border-[#939393] hover:border-white"
+                className="bg-[hsl(0,0%,7%)] text-sm text-[#CACACA] hover:text-white px-2 py-1 rounded-md outline-0 border border-[#939393] hover:border-white sizing-content"
                 onChange={(e) => { setFolderFilter(e.target.value) }}
                 value={folderFilter}
               >
+                <option value="NONE" disabled>SORT</option>
                 <option value="ANAME">A → Z (Name)</option>
                 <option value="DNAME">Z → A (Name)</option>
                 <option value="ASIZE">Small → Large (Size)</option>
@@ -282,10 +283,11 @@ const Drive = () => {
               <select
                 name="sortOptions"
                 id="sortOptions"
-                className="bg-[hsl(0,0%,7%)] text-sm text-[#CACACA] hover:text-white px-2 py-1 rounded-md outline-0 border border-[#939393] hover:border-white"
+                className="bg-[hsl(0,0%,7%)] text-sm text-[#CACACA] hover:text-white px-2 py-1 rounded-md outline-0 border border-[#939393] hover:border-white sizing-content"
                 onChange={(e) => { setFileFilter(e.target.value) }}
                 value={fileFilter}
               >
+                <option value="NONE" disabled>SORT</option>
                 <option value="ANAME">A → Z (Name)</option>
                 <option value="DNAME">Z → A (Name)</option>
                 <option value="ASIZE">Small → Large (Size)</option>
