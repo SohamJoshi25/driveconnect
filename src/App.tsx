@@ -5,6 +5,9 @@ import { Toaster } from 'sonner'
 //Pages
 import Drive from './pages/drivev2/Drive';
 import Landing from './pages/landing/Landing';
+import PrivacyPolicy from './pages/privacypolicy/PrivacyPolicy';
+import TermsAndConditions from './pages/termsandconditions/TermsAndConditions';
+import NotFound from './pages/notfound/NotFound';
 
 const App = () => {
 
@@ -14,9 +17,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Drive />} />
         <Route path="/landing" element={<Landing />} />
-        <Route path="/privacy-policy" element={<h1>Privacy Policy</h1>} />
-        <Route path="/terms-and-conditions" element={<h1>Terms and Conditions</h1>} />
-        <Route path="*" element={<h1>Page Not Found</h1>} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Toaster position="top-right" closeButton richColors toastOptions={{
