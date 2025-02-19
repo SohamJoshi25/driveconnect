@@ -32,15 +32,15 @@ const Landing = () => {
                 <GraphicSVG></GraphicSVG>
             </div>
 
-            <h2 className="text-[16px] mt-8 mx-10 md:mx-30 lg:mx-80">
+            <h2 className="text-[16px] mt-8 mx-12 md:mx-30 lg:mx-80">
                 What's special about our app is the security we provide, we break your files into small units called as chunks and store them in your own drives so your data remains with with you.and In fact even Google can't access this data inside your drive as this data is only available to our app.The app allows you to have multiple drive account storage while having the abstraction of using a single one.
             </h2>
 
-            <h2 className="text-[16px] mx-13 md:mx-30 lg:mx-80">
+            <h2 className="text-[16px] mx-12 md:mx-30 lg:mx-80">
                 What's special about our app is the security we provide, we break your files into small units called as chunks and store them in your own drives so your data remains with with you.and In fact even Google can't access this data inside your drive as this data is only available to our app.The app allows you to have multiple drive account storage while having the abstraction of using a single one.
             </h2>
 
-            <h2 className="text-[16px] pb-30 mx-10 md:mx-30 lg:mx-80">
+            <h2 className="text-[16px] pb-30 mx-12 md:mx-30 lg:mx-80">
                 This project started from a personal motivation to not to use multiple Google accounts and have a single point of abstraction of UI.
             </h2>
 
