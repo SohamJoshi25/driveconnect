@@ -36,7 +36,7 @@ const Landing = () => {
                 <h1 className="text-white w-full text-right text-md">Connect Drives for more space</h1>
             </div>
 
-            <div className="flex justify-between flex-col-reverse items-center md:flex-row gap-10 md:gap-20 lg:gap-30 mt-10 md:my-10 mx-20 md:mx-30 lg:mx-80">
+            <div className="flex justify-between flex-col-reverse items-center md:flex-row gap-14 md:gap-24 lg:gap-30 mt-10 md:my-10 mx-20 md:mx-30 lg:mx-80">
                 <div className="text-white text-[17px] text-start w-[350px] roboto-mono">
                     <span>Our app loves you to connect multiple drive accounts and use all of your drive account storage via out app. This also helps to reduce a phenomena called as <span className="italic">fragmentation of memory </span> which occurs due to parcel usage of drive resulting into restricted storage in spite of having the totalspace.</span>
                     <div className="pt-8 pb-6 text-[16px]">Start Using our app now.</div>
