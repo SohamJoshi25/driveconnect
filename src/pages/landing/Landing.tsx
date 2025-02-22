@@ -38,7 +38,7 @@ const Landing = () => {
 
             <div className="flex justify-between w-full flex-col-reverse items-center md:flex-row mt-10 md:py-10 px-20 md:px-30 lg:px-80">
                 <div className="text-white text-[17px] text-start w-[350px] roboto-mono">
-                    <span>Our app loves you to connect multiple drive accounts and use all of your drive account storage via out app. This also helps to reduce a phenomena called as <span className="italic">fragmentation of memory </span> which occurs due to parcel usage of drive resulting into restricted storage in spite of having the totalspace.</span>
+                    <span>Our app allows you to connect multiple drive accounts and use all of your drive account storage via our app. This also helps to reduce a phenomena called as <span className="italic">fragmentation of memory </span> which occurs due to partial usage of drive resulting into restricted storage in spite of having the total required space.</span>
                     <div className="pt-8 pb-6 text-[16px]">Start Using our app now.</div>
                     <button className="rounded-[6px] text-sm w-[160px] border border-[#939393] py-2 px-2 flex items-center justify-around  hover:shadow-sm hover:border-white text-[#CACACA] hover:text-white shadow-[#7e7e7e] cursor-pointer" onClick={handleLogin}>Google Sign In</button>
                     <span className="text-xs mt-4 pl-1 line-clamp-3">By Signing in you aggree to all <span className="cursor-pointer underline underline-offset-2 decoration-blue-500" onClick={handletnc}>terms and conditions</span> and have read and understood our <span className="cursor-pointer underline underline-offset-2 decoration-blue-500" onClick={handlepp}>privacy policy</span>.</span>
@@ -47,11 +47,7 @@ const Landing = () => {
             </div>
 
             <h2 className="text-[16px] mt-8 mx-20 md:mx-30 lg:mx-80">
-                What's special about our app is the security we provide, we break your files into small units called as chunks and store them in your own drives so your data remains with with you.and In fact even Google can't access this data inside your drive as this data is only available to our app.The app allows you to have multiple drive account storage while having the abstraction of using a single one.
-            </h2>
-
-            <h2 className="text-[16px] mx-20 md:mx-30 lg:mx-80">
-                What's special about our app is the security we provide, we break your files into small units called as chunks and store them in your own drives so your data remains with with you.and In fact even Google can't access this data inside your drive as this data is only available to our app.The app allows you to have multiple drive account storage while having the abstraction of using a single one.
+                What's special about our app is the security we provide, we break your files into small units called as chunks and store them in your own drives so your data remains with with you. And in fact even Google can't access this data inside your drive as this data is only available to our app.The app allows you to have multiple drive account storage while having the abstraction of using a single one.
             </h2>
 
             <h2 className="text-[16px] pb-30 mx-20 md:mx-30 lg:mx-80">
