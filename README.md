@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+# 🚀 DriveConnect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**DriveConnect** is a powerful backend service that **seamlessly unifies multiple Google Drive accounts**, giving users a single, coherent storage experience. By minimizing fragmentation across accounts, it simplifies file management, sharing, and access.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Key Features
 
-## Expanding the ESLint configuration
+- **Multi‑account aggregation**: Link and combine multiple Google Drive accounts under one unified interface.
+- **Efficient file Storage**: Chunks file based on it size and uploads chunks to your drive account allowing for pause/resume and removing fragmentation problems.
+- **OAuth 2.0 authentication**: Secure user authentication with token management and refresh capabilities.
+- **Real‑time sync**: Optionally monitor Drives for changes to keep the aggregated state fresh.
+- **RESTful API**: A clean, scalable HTTP API for integrations and web/app frontends.
+- **MongoDB powered**: Flexible document‑oriented backend for drive metadata and user data.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## ⚙️ Architecture Overview
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```text
+┌──────────────┐       ┌──────────────┐       ┌──────────────┐
+│   Frontend   │◄──────│  DriveConnect│─────▶│  Google API  │
+│ (web/mobile) │  HTTP │    Backend   │  API  │   (Drive)    │
+└──────────────┘       └──────┬───────┘       └──────────────┘
+                             │
+                             ▼
+                        ┌─────────┐
+                        │ MongoDB │
+                        └─────────┘
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Backend (TypeScript)**: Handles OAuth flows, token storage, file listing, metadata indexing, and API endpoints.
+- **MongoDB**: Stores user profiles, linked account info, and aggregated drive metadata.
+- **Google Drive API**: Used to list files, fetch metadata, and perform operations across drives.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 🛡️ Security & Auth
+
+- **OAuth 2.0**: Secure user authentication with Google — tokens are stored encrypted.
+- **Token Refresh**: Automatically refreshes expired tokens behind the scenes.
+- **Scoped Access**: Access is limited to Drive scopes, with granular permissions only where needed.
+
+---
+
+## 🚀 Use Cases
+
+- **Personal**: Allows to have multiple drives and single point of access to have virtually unlimited Storage.
+
+---
+
+**DriveConnect** simplifies multi‑Drive management. If you've ever juggled multiple Google accounts to find a file—this is your one‑stop solution. Enjoy! 😊
+
