@@ -2,6 +2,10 @@
 
 **DriveConnect** is a powerful backend service that **seamlessly unifies multiple Google Drive accounts**, giving users a single, coherent storage experience. By minimizing fragmentation across accounts, it simplifies file management, sharing, and access.
 
+
+
+![drive connect logo](./public/Graphic.png)
+
 ---
 
 ## 🌟 Key Features
