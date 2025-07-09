@@ -1,7 +1,6 @@
 # 🚀 DriveConnect
 
-**DriveConnect** is a powerful backend service that **seamlessly unifies multiple Google Drive accounts**, giving users a single, coherent storage experience. By minimizing fragmentation across accounts, it simplifies file management, sharing, and access.
-
+**DriveConnect** is a application that **seamlessly unifies multiple Google Drive accounts**, giving users a single, coherent storage experience. Our app allows you to connect multiple drive accounts and use all of your drive account storage via our app. This also helps to reduce a phenomena called as **fragmentation of memory** which occurs due to partial usage of drive resulting into restricted storage in spite of having the total required space
 
 
 ![drive connect logo](./public/Graphic.png)
@@ -16,8 +15,11 @@
 - **Real‑time sync**: Optionally monitor Drives for changes to keep the aggregated state fresh.
 - **RESTful API**: A clean, scalable HTTP API for integrations and web/app frontends.
 - **MongoDB powered**: Flexible document‑oriented backend for drive metadata and user data.
+- **Security**: We break your files into small units called as **chunks and store them in your own drives so your data remains with with you. 
+And in fact even Google can't access this data inside your drive as this data is only available to our app.The app allows you to have multiple drive account storage while having the abstraction of using a single one.
 
 ---
+
 
 ## ⚙️ Architecture Overview
 
